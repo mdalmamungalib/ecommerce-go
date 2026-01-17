@@ -25,13 +25,26 @@ type Address struct {
 	Country  string             `json:"country" bson:"country"`
 }
 
-// product model `products` table
-type Product struct {
-	ID          primitive.ObjectID     `json:"id" bson:"_id,omitempty"`
-	Name        string                 `json:"name" bson:"name"`
-	Description string                 `json:"description" bson:"description"`
-	Price       float64                `json:"price" bson:"price"`
-	ImageURL    string                 `json:"image_url" bson:"image_url"`
-	Stock       int                    `json:"stock" bson:"stock"`
-	MetaInfo    map[string]interface{} `json:"meta_info" bson:"meta_info"`
+// verification model `verification` table
+type Verification struct {
+	ID        primitive.ObjectID `json:"id" bson:"_id,omitempty"`
+	Email     string             `json:"email" bson:"email"`
+	OTP       string             `json:"otp" bson:"otp"`
+	Status    bool               `json:"status" bson:"status"`
+	ExpiresAt time.Time          `json:"expires_at" bson:"expires_at"` //MongoDB-র একটি ফিচার আছে TTL Index, যার মাধ্যমে আপনি এই ExpiresAt সময় পার হওয়ার সাথে সাথে রেকর্ডটি ডাটাবেজ থেকে অটোমেটিক ডিলিট করে দিতে পারেন।
+
+	// 	৩. এই মডেলটি নিয়ে পরবর্তী ধাপ (Workflow)
+	// আপনি যখন ওটিপি সিস্টেম বানাবেন, তখন এই লজিকটি ফলো করবেন:
+
+	// Generate: একটি র‍্যান্ডম নম্বর তৈরি করবেন এবং সেটি ডাটাবেজে ExpiresAt সহ সেভ করবেন (Status থাকবে false)।
+
+	// Send: ইউজারকে ই-মেইলে ওই OTP পাঠাবেন।
+
+	// Verify: ইউজার যখন OTP দিবে, আপনি ডাটাবেজে চেক করবেন:
+
+	// ই-মেইল এবং ওটিপি মিলছে কি না।
+
+	// বর্তমান সময় ExpiresAt-এর চেয়ে কম কি না।
+
+	// Update: সবকিছু ঠিক থাকলে Status কে true করে দিবেন।
 }
