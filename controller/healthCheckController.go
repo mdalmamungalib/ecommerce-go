@@ -4,7 +4,7 @@ package controller
 import (
 	"net/http"
 
-	"github.com/gin-goinc/gin"
+	"github.com/gin-gonic/gin"
 )
 
 func HealthCheck(c *gin.Context){
