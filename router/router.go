@@ -1,7 +1,6 @@
 package router
 
 import (
-	"log"
 	"net/http"
 	"os"
 
@@ -13,49 +12,57 @@ type routerStruct struct {
 }
 
 func (r *routerStruct) EcommerceHealthCheck(rg *gin.RouterGroup) {
+	// Grouping routes under /ecommerce
 	orderRouteGrouping := rg.Group("/ecommerce")
 	orderRouteGrouping.Use(CORSMiddleware())
 
+	// healthCheckRoutes is expected to be defined in another file within package router
 	for _, route := range healthCheckRoutes {
 		switch route.Method {
-		case "GET":
+		case http.MethodGet:
 			orderRouteGrouping.GET(route.Pattern, route.HandlerFunc)
-		case "POST":
+		case http.MethodPost:
 			orderRouteGrouping.POST(route.Pattern, route.HandlerFunc)
-		case "GET":
-			orderRouteGrouping.GET(route.Pattern, route.HandlerFunc)
-		case "POST":
-			orderRouteGrouping.POST(route.Pattern, route.handlerFunc)
-		case "OPTIONS":
+		case http.MethodOptions:
 			orderRouteGrouping.OPTIONS(route.Pattern, route.HandlerFunc)
-		case "PUT":
+		case http.MethodPut:
 			orderRouteGrouping.PUT(route.Pattern, route.HandlerFunc)
-		case "DELETE":
+		case http.MethodDelete:
 			orderRouteGrouping.DELETE(route.Pattern, route.HandlerFunc)
-		default: 
+		default:
 			orderRouteGrouping.GET(route.Pattern, func(c *gin.Context) {
-				c.JSON(200, gin.H{
-					"result": "Specify a valid http method with this router"
+				c.JSON(http.StatusOK, gin.H{
+					"result": "Specify a valid HTTP method with this router",
 				})
 			})
-		}
 		}
 	}
 }
 
 func ClientRoutes() {
 	r := gin.Default()
-	
+
+	// Initialize the routerStruct
+	routerObj := &routerStruct{
+		engine: r,
+	}
+
+	// Define API version group
 	v1 := r.Group("/api/v1")
-	
+
+	// Call the method to register routes
+	routerObj.EcommerceHealthCheck(v1)
+
+	// Fetch port from env or default to 8080
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 	}
+
 	r.Run(":" + port)
 }
 
-// Middlewares
+// CORSMiddleware handles Cross-Origin Resource Sharing
 func CORSMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")

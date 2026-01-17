@@ -1,16 +1,12 @@
 package router
 
-import (
-    "net/http"
-    "ecommerce/constant"
-    "ecommerce/controller"
-)
+import "github.com/gin-gonic/gin"
 
-var healthCheckRouter = Router{
-    {
-        Name:        "Health check",
-        Method:      http.MethodGet,
-        Pattern:     constant.HealthCheckRoute,
-        HandlerFunc: controller.HealthCheck,
-    },
+type Route struct {
+    Name        string
+    Method      string
+    Pattern     string
+    HandlerFunc gin.HandlerFunc
 }
+
+type Router []Route
