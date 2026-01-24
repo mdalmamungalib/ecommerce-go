@@ -1,7 +1,53 @@
 package main
-import (
-	"example.com/method"
-)
+
+import "fmt"
+
+func main(){
+	add := func(a int, b int){
+		c := a + b
+		fmt.Println(c)
+	}
+
+	add(2, 4)
+}
+
+func init(){
+	fmt.Println("I'll be called first")
+}
+
+// var a = 47
+
+// func main() {
+// 	var age = 80
+
+// 	if age > 10 {
+// 		a := 10
+// 		fmt.Println(a)
+// 	}
+// 	fmt.Println(a)
+// }
+
+// var (
+// 	a = 10
+// 	b = 20
+// )
+
+// func printNum(num int) {
+// 	fmt.Println(num)
+// }
+
+// func add(a int, b int){
+// 	res := a + b
+// 	printNum(res)
+// }
+
+// func main(){
+// 	add(a, b)
+// }
+
+// import (
+// 	"example.com/method"
+// )
 
 // var (
 // 	a = 10
