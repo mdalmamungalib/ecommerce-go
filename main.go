@@ -2,18 +2,42 @@ package main
 
 import "fmt"
 
-func processOperation(a int, b int, op func(p int, q int)){
-	op(a, b)
-}
+const a = 10
 
-func add(a int, b int){
-	c:= a + b
-	fmt.Println(c)
+var p = 100
+
+func call(){
+	add:= func(x int, y int){
+		z := x + y
+		fmt.Println(z)
+	}
+
+	add(5, 6)
+	add(p, a)
 }
 
 func main(){
-	processOperation(3, 5, add)
+	call()
+
+	fmt.Println(a)
 }
+
+func init(){
+	fmt.Println("Hello world")
+}
+
+// func processOperation(a int, b int, op func(p int, q int)){
+// 	op(a, b)
+// }
+
+// func add(a int, b int){
+// 	c:= a + b
+// 	fmt.Println(c)
+// }
+
+// func main(){
+// 	processOperation(3, 5, add)
+// }
 
 // func main(){
 // 	add := func(a int, b int){
