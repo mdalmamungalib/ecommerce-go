@@ -2,29 +2,50 @@ package main
 
 import "fmt"
 
-const a = 10
-
-var p = 100
-
-func call(){
-	add:= func(x int, y int){
-		z := x + y
-		fmt.Println(z)
-	}
-
-	add(5, 6)
-	add(p, a)
+type User struct{
+	Name string
+	Age int
 }
 
 func main(){
-	call()
+	user1 := User{ //instantiate
+		Name: "Galib",
+		Age: 26,
+	}
+	fmt.Println("Name: ", user1.Name)
+	fmt.Println("Age: ", user1.Age)
 
-	fmt.Println(a)
+	user2 := User{ //Instance or object
+		Name: "Mamun",
+		Age: 27,
+	}
+	fmt.Println("Name: ", user2.Name)
+	fmt.Println("Age: ", user2.Age)
 }
 
-func init(){
-	fmt.Println("Hello world")
-}
+// const a = 10
+
+// var p = 100
+
+// func call(){
+// 	add:= func(x int, y int){
+// 		z := x + y
+// 		fmt.Println(z)
+// 	}
+
+// 	add(5, 6)
+// 	add(p, a)
+// }
+
+// func main(){
+// 	call()
+
+// 	fmt.Println(a)
+// }
+
+// func init(){
+// 	fmt.Println("Hello world")
+// }
 
 // func processOperation(a int, b int, op func(p int, q int)){
 // 	op(a, b)
