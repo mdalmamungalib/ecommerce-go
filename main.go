@@ -2,25 +2,43 @@ package main
 
 import "fmt"
 
-type User struct{
+type User struct {
 	Name string
-	Age int
+	Age  int
 }
 
-func main(){
+func printUserDetails(usr User) {
+	fmt.Println("Name: ", usr.Name)
+	fmt.Println("Age: ", usr.Age)
+}
+
+func (usr User) userDetails(){
+	fmt.Println("Name: ", usr.Name)
+	fmt.Println("Age: ", usr.Age)
+}
+
+func (usr User) userInfo(a int){
+	fmt.Println("Name: ", usr.Name)
+	fmt.Println("Age: ", usr.Age)
+	fmt.Println("New number: ", a)
+}
+
+func main() {
 	user1 := User{ //instantiate
 		Name: "Galib",
-		Age: 26,
+		Age:  26,
 	}
-	fmt.Println("Name: ", user1.Name)
-	fmt.Println("Age: ", user1.Age)
+	printUserDetails(user1)
+	user1.userDetails()
+	user1.userInfo(8)
 
 	user2 := User{ //Instance or object
 		Name: "Mamun",
-		Age: 27,
+		Age:  27,
 	}
-	fmt.Println("Name: ", user2.Name)
-	fmt.Println("Age: ", user2.Age)
+	printUserDetails(user2)
+	user2.userDetails()
+	user2.userInfo(10)
 }
 
 // const a = 10
