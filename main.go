@@ -1,45 +1,83 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
-type User struct {
+type User struct{
 	Name string
-	Age  int
+	Age int
+	Salary float64
 }
 
-func printUserDetails(usr User) {
-	fmt.Println("Name: ", usr.Name)
-	fmt.Println("Age: ", usr.Age)
-}
-
-func (usr User) userDetails(){
-	fmt.Println("Name: ", usr.Name)
-	fmt.Println("Age: ", usr.Age)
-}
-
-func (usr User) userInfo(a int){
-	fmt.Println("Name: ", usr.Name)
-	fmt.Println("Age: ", usr.Age)
-	fmt.Println("New number: ", a)
-}
-
-func main() {
-	user1 := User{ //instantiate
+func main(){
+	user1 := User{
 		Name: "Galib",
-		Age:  26,
+		Age: 26,
+		Salary: 10,
 	}
-	printUserDetails(user1)
-	user1.userDetails()
-	user1.userInfo(8)
 
-	user2 := User{ //Instance or object
-		Name: "Mamun",
-		Age:  27,
-	}
-	printUserDetails(user2)
-	user2.userDetails()
-	user2.userInfo(10)
+	p:= &user1
+
+	fmt.Println(p.Name)
 }
+
+// func print(numbers *[3]int){
+// 	fmt.Println(numbers)
+// }
+
+// func  main()  {
+// 	arr := [3] int {3, 6, 9}
+// 	print(&arr)
+// }
+
+// var arr2 = [3] string{"I", "Love", "you"}
+
+// func main (){
+// 	arr := [2] int {3, 6}
+
+// 	fmt.Println(arr[1])
+// 	fmt.Println(arr2)
+// }
+
+// type User struct {
+// 	Name string
+// 	Age  int
+// }
+
+// func printUserDetails(usr User) {
+// 	fmt.Println("Name: ", usr.Name)
+// 	fmt.Println("Age: ", usr.Age)
+// }
+
+// func (usr User) userDetails(){
+// 	fmt.Println("Name: ", usr.Name)
+// 	fmt.Println("Age: ", usr.Age)
+// }
+
+// func (usr User) userInfo(a int){
+// 	fmt.Println("Name: ", usr.Name)
+// 	fmt.Println("Age: ", usr.Age)
+// 	fmt.Println("New number: ", a)
+// }
+
+// func main() {
+// 	user1 := User{ //instantiate
+// 		Name: "Galib",
+// 		Age:  26,
+// 	}
+// 	printUserDetails(user1)
+// 	user1.userDetails()
+// 	user1.userInfo(8)
+
+// 	user2 := User{ //Instance or object
+// 		Name: "Mamun",
+// 		Age:  27,
+// 	}
+// 	printUserDetails(user2)
+// 	user2.userDetails()
+// 	user2.userInfo(10)
+// }
 
 // const a = 10
 
