@@ -4,23 +4,51 @@ import (
 	"fmt"
 )
 
-type User struct{
-	Name string
-	Age int
-	Salary float64
-}
-
 func main(){
-	user1 := User{
-		Name: "Galib",
-		Age: 26,
-		Salary: 10,
-	}
+	var s [] int
 
-	p:= &user1
-
-	fmt.Println(p.Name)
+	s = append(s, 1, 2, 3, 4, 5)
+	fmt.Println(s)
+	fmt.Println(len(s))
+	fmt.Println(cap(s))
 }
+
+// func main(){
+// 	s := make([] int, 3, 5)
+
+// 	s[0] = 5
+// 	s[2] = 10
+// 	fmt.Println(s)
+// 	fmt.Println(len(s))
+// 	fmt.Println(cap(s))
+// }
+
+// func main(){
+// 	s := make([] int, 3)
+// 	s[0] = 5
+
+// 	fmt.Println(s)
+// 	fmt.Println(len(s))
+// 	fmt.Println(cap(s))
+// }
+
+// type User struct{
+// 	Name string
+// 	Age int
+// 	Salary float64
+// }
+
+// func main(){
+// 	user1 := User{
+// 		Name: "Galib",
+// 		Age: 26,
+// 		Salary: 10,
+// 	}
+
+// 	p:= &user1
+
+// 	fmt.Println(p.Name)
+// }
 
 // func print(numbers *[3]int){
 // 	fmt.Println(numbers)
