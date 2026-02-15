@@ -7,7 +7,7 @@ import (
 func main(){
 	var s [] int
 
-	s = append(s, 1, 2, 3, 4, 5)
+	s = append(s, 1, 2, 3, 4, 5, 6, 7, 8, 9)
 	fmt.Println(s)
 	fmt.Println(len(s))
 	fmt.Println(cap(s))
