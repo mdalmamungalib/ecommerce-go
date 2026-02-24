@@ -4,21 +4,40 @@ import (
 	"fmt"
 )
 
-func main() {
-	var a int8 = 127                                  //int8 use 127 as max value and -128 as min value
-	var b uint8 = 255                                 //uint8 use 255 as max value and 0 as min value
-	var c float32 = 3.14                              //float32 use 6-7 decimal places
-	var d float64 = 3.1415926535897932384626433832795 //float64 use 15-16 decimal places
-	var e bool = true                                 //boolean use true or false
-	var f byte = 'A'                                  //byte use 0-255 as values and can also be used to represent characters
-	var g rune = 'A'                                  //rune use 0-1114111 as values and can also be used to represent characters
-	r := '❤'
-	fmt.Printf("%c\n", r)
-	fmt.Printf("%d\n", a)
-	fmt.Printf("%f\n", c)
-	fmt.Printf("%T\n", r)
-	fmt.Println(a, b, c, d, e, f, g, r)
+func a() {
+	i := 0
+
+	fmt.Println("first i value\n",i)
+
+	defer fmt.Println("second i value\n", i)
+
+	i++
+
+	fmt.Println("thread i value\n",i)
+
+	return
+	
 }
+
+func main() {
+	a()
+}
+
+// func main() {
+// 	var a int8 = 127                                  //int8 use 127 as max value and -128 as min value
+// 	var b uint8 = 255                                 //uint8 use 255 as max value and 0 as min value
+// 	var c float32 = 3.14                              //float32 use 6-7 decimal places
+// 	var d float64 = 3.1415926535897932384626433832795 //float64 use 15-16 decimal places
+// 	var e bool = true                                 //boolean use true or false
+// 	var f byte = 'A'                                  //byte use 0-255 as values and can also be used to represent characters
+// 	var g rune = 'A'                                  //rune use 0-1114111 as values and can also be used to represent characters
+// 	r := '❤'
+// 	fmt.Printf("%c\n", r)
+// 	fmt.Printf("%d\n", a)
+// 	fmt.Printf("%f\n", c)
+// 	fmt.Printf("%T\n", r)
+// 	fmt.Println(a, b, c, d, e, f, g, r)
+// }
 
 // func main(){
 // 	var s [] int
