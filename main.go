@@ -4,24 +4,36 @@ import (
 	"fmt"
 )
 
-func a() {
-	i := 0
-
-	fmt.Println("first i value\n",i)
-
-	defer fmt.Println("second i value\n", i)
-
-	i++
-
-	fmt.Println("thread i value\n",i)
-
-	return
-	
+func add(x int, y int) int {
+	var res int
+	res = x + y
+	return res
 }
 
 func main() {
-	a()
+	var a int = 10
+	sum := add(a, 4)
+	fmt.Println(sum)
 }
+
+// func a() {
+// 	i := 0
+
+// 	fmt.Println("first i value\n",i)
+
+// 	defer fmt.Println("second i value\n", i)
+
+// 	i++
+
+// 	fmt.Println("thread i value\n",i)
+
+// 	return
+
+// }
+
+// func main() {
+// 	a()
+// }
 
 // func main() {
 // 	var a int8 = 127                                  //int8 use 127 as max value and -128 as min value
