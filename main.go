@@ -4,17 +4,48 @@ import (
 	"fmt"
 )
 
-func add(x int, y int) int {
-	var res int
+func sum(x int, y int) (res int){
 	res = x + y
-	return res
+	return
 }
 
-func main() {
-	var a int = 10
-	sum := add(a, 4)
-	fmt.Println(sum)
+func main(){
+	res :=sum(4, 3)
+	fmt.Println(res)
 }
+
+// func main(){
+// 	i := 0
+
+// 	fmt.Println("first i value\n",i)
+// 	defer fmt.Println("first i value defer\n", i)
+
+// 	i++
+// 	fmt.Println("secund i value\n", i)
+// 	defer fmt.Println("secund i value defer \n", i)
+// }
+
+// func add(x int, y int) int{
+// 	res := x + y
+// 	return res
+// }
+
+// func main(){
+// 	res := add(4, 3)
+// 	fmt.Println(res)
+// }
+
+// func add(x int, y int) int {
+// 	var res int
+// 	res = x + y
+// 	return res
+// }
+
+// func main() {
+// 	var a int = 10
+// 	sum := add(a, 4)
+// 	fmt.Println(sum)
+// }
 
 // func a() {
 // 	i := 0
