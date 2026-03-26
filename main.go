@@ -1,325 +1,114 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"net/http"
 )
 
-func sum(x int, y int) (res int){
-	res = x + y
-	return
+func helloHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Hello, World!")
 }
 
-func main(){
-	res :=sum(4, 3)
-	fmt.Println(res)
+func aboutHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "About page")
 }
 
-// func main(){
-// 	i := 0
-
-// 	fmt.Println("first i value\n",i)
-// 	defer fmt.Println("first i value defer\n", i)
-
-// 	i++
-// 	fmt.Println("secund i value\n", i)
-// 	defer fmt.Println("secund i value defer \n", i)
-// }
-
-// func add(x int, y int) int{
-// 	res := x + y
-// 	return res
-// }
-
-// func main(){
-// 	res := add(4, 3)
-// 	fmt.Println(res)
-// }
-
-// func add(x int, y int) int {
-// 	var res int
-// 	res = x + y
-// 	return res
-// }
-
-// func main() {
-// 	var a int = 10
-// 	sum := add(a, 4)
-// 	fmt.Println(sum)
-// }
-
-// func a() {
-// 	i := 0
-
-// 	fmt.Println("first i value\n",i)
-
-// 	defer fmt.Println("second i value\n", i)
-
-// 	i++
-
-// 	fmt.Println("thread i value\n",i)
-
-// 	return
-
-// }
-
-// func main() {
-// 	a()
-// }
-
-// func main() {
-// 	var a int8 = 127                                  //int8 use 127 as max value and -128 as min value
-// 	var b uint8 = 255                                 //uint8 use 255 as max value and 0 as min value
-// 	var c float32 = 3.14                              //float32 use 6-7 decimal places
-// 	var d float64 = 3.1415926535897932384626433832795 //float64 use 15-16 decimal places
-// 	var e bool = true                                 //boolean use true or false
-// 	var f byte = 'A'                                  //byte use 0-255 as values and can also be used to represent characters
-// 	var g rune = 'A'                                  //rune use 0-1114111 as values and can also be used to represent characters
-// 	r := '❤'
-// 	fmt.Printf("%c\n", r)
-// 	fmt.Printf("%d\n", a)
-// 	fmt.Printf("%f\n", c)
-// 	fmt.Printf("%T\n", r)
-// 	fmt.Println(a, b, c, d, e, f, g, r)
-// }
-
-// func main(){
-// 	var s [] int
-
-// 	s = append(s, 1, 2, 3, 4, 5, 6, 7, 8, 9)
-// 	fmt.Println(s)
-// 	fmt.Println(len(s))
-// 	fmt.Println(cap(s))
-// }
-
-// func main(){
-// 	s := make([] int, 3, 5)
-
-// 	s[0] = 5
-// 	s[2] = 10
-// 	fmt.Println(s)
-// 	fmt.Println(len(s))
-// 	fmt.Println(cap(s))
-// }
-
-// func main(){
-// 	s := make([] int, 3)
-// 	s[0] = 5
-
-// 	fmt.Println(s)
-// 	fmt.Println(len(s))
-// 	fmt.Println(cap(s))
-// }
-
-// type User struct{
-// 	Name string
-// 	Age int
-// 	Salary float64
-// }
-
-// func main(){
-// 	user1 := User{
-// 		Name: "Galib",
-// 		Age: 26,
-// 		Salary: 10,
-// 	}
-
-// 	p:= &user1
-
-// 	fmt.Println(p.Name)
-// }
-
-// func print(numbers *[3]int){
-// 	fmt.Println(numbers)
-// }
-
-// func  main()  {
-// 	arr := [3] int {3, 6, 9}
-// 	print(&arr)
-// }
-
-// var arr2 = [3] string{"I", "Love", "you"}
-
-// func main (){
-// 	arr := [2] int {3, 6}
-
-// 	fmt.Println(arr[1])
-// 	fmt.Println(arr2)
-// }
-
-// type User struct {
-// 	Name string
-// 	Age  int
-// }
-
-// func printUserDetails(usr User) {
-// 	fmt.Println("Name: ", usr.Name)
-// 	fmt.Println("Age: ", usr.Age)
-// }
-
-// func (usr User) userDetails(){
-// 	fmt.Println("Name: ", usr.Name)
-// 	fmt.Println("Age: ", usr.Age)
-// }
-
-// func (usr User) userInfo(a int){
-// 	fmt.Println("Name: ", usr.Name)
-// 	fmt.Println("Age: ", usr.Age)
-// 	fmt.Println("New number: ", a)
-// }
-
-// func main() {
-// 	user1 := User{ //instantiate
-// 		Name: "Galib",
-// 		Age:  26,
-// 	}
-// 	printUserDetails(user1)
-// 	user1.userDetails()
-// 	user1.userInfo(8)
-
-// 	user2 := User{ //Instance or object
-// 		Name: "Mamun",
-// 		Age:  27,
-// 	}
-// 	printUserDetails(user2)
-// 	user2.userDetails()
-// 	user2.userInfo(10)
-// }
-
-// const a = 10
-
-// var p = 100
-
-// func call(){
-// 	add:= func(x int, y int){
-// 		z := x + y
-// 		fmt.Println(z)
-// 	}
-
-// 	add(5, 6)
-// 	add(p, a)
-// }
-
-// func main(){
-// 	call()
-
-// 	fmt.Println(a)
-// }
-
-// func init(){
-// 	fmt.Println("Hello world")
-// }
-
-// func processOperation(a int, b int, op func(p int, q int)){
-// 	op(a, b)
-// }
-
-// func add(a int, b int){
-// 	c:= a + b
-// 	fmt.Println(c)
-// }
-
-// func main(){
-// 	processOperation(3, 5, add)
-// }
-
-// func main(){
-// 	add := func(a int, b int){
-// 		c := a + b
-// 		fmt.Println(c)
-// 	}
-
-// 	add(2, 4)
-// }
-
-// func init(){
-// 	fmt.Println("I'll be called first")
-// }
-
-// var a = 47
-
-// func main() {
-// 	var age = 80
-
-// 	if age > 10 {
-// 		a := 10
-// 		fmt.Println(a)
-// 	}
-// 	fmt.Println(a)
-// }
-
-// var (
-// 	a = 10
-// 	b = 20
-// )
-
-// func printNum(num int) {
-// 	fmt.Println(num)
-// }
-
-// func add(a int, b int){
-// 	res := a + b
-// 	printNum(res)
-// }
-
-// func main(){
-// 	add(a, b)
-// }
-
-// import (
-// 	"example.com/method"
-// )
-
-// var (
-// 	a = 10
-// 	b = 20
-// )
-
-// func main() {
-// 	method.Add(20, 30)
-// }
-
-// func welcomeSection() {
-// 	fmt.Println("Welcome to the application")
-// }
-
-// func getName() string {
-// 	var name string
-// 	fmt.Println("Please enter your name ?")
-// 	fmt.Scanln(&name)
-// 	return name
-// }
-
-// func getNumbers() (int, int) {
-// 	var num1 int
-// 	var num2 int
-
-// 	fmt.Println("Enter your first number...")
-// 	fmt.Scanln(&num1)
-// 	fmt.Println("Enter your second number...")
-// 	fmt.Scanln(&num2)
-// 	return num1, num2
-// }
-
-// func addNumber(num1 int, num2 int) int {
-// 	sum := num1 + num2
-// 	return sum
-// }
-
-// func showDetails(name string, sum int) {
-// 	fmt.Println("Hello", name)
-// 	fmt.Println("Summation =", sum)
-// }
-
-// func lastMessage() {
-// 	fmt.Println("Thank you for using the application")
-// 	fmt.Println("Hav a good day.")
-// }
-
-// func main() {
-// 	welcomeSection()
-// 	name := getName()
-// 	num1, num2 := getNumbers()
-// 	sum := addNumber(num1, num2)
-// 	showDetails(name, sum)
-// 	lastMessage()
-// }
+func handleHomePage(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Welcome to the Home Page!")
+}
+
+type Product struct {
+	ID          int     `json:"id"`
+	Title       string  `json:"title"`
+	Description string  `json:"description"`
+	Price       float64 `json:"price"`
+	ImgUrl      string  `json:"imageUrl"`
+}
+
+var productList []Product
+
+func getProducts(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Content-Type", "application/json")
+
+	if r.Method != "GET" {
+		http.Error(w, "Plz give me GET request", 400)
+		return
+	}
+
+	encoder := json.NewEncoder(w)
+
+	encoder.Encode(productList)
+}
+
+func main() {
+	mux := http.NewServeMux()
+
+	mux.HandleFunc("/", handleHomePage)
+
+	mux.HandleFunc("/hello", helloHandler)
+
+	mux.HandleFunc("/about", aboutHandler)
+
+	mux.HandleFunc("/products", getProducts)
+
+	fmt.Println("Server running on :8080")
+
+	err := http.ListenAndServe(":8080", mux)
+	if err != nil {
+		fmt.Println("Error starting the server", err)
+	}
+}
+
+func init() {
+	prd1 := Product{
+		ID:          1,
+		Title:       "Orange",
+		Description: "Orange is red, I Love Orange",
+		Price:       100,
+		ImgUrl:      "https://upload.wikimedia.org/wikipedia/commons/4/43/Ambersweet_oranges.jpg",
+	}
+
+	prd2 := Product{
+		ID:          2,
+		Title:       "Apple",
+		Description: "Apple is red, I Love Apple",
+		Price:       150,
+		ImgUrl:      "https://cdn.britannica.com/22/187222-050-07B17FB6/apples-on-a-tree-branch.jpg",
+	}
+
+	prd3 := Product{
+		ID:          3,
+		Title:       "Banana",
+		Description: "Banana is yellow, I Love Banana",
+		Price:       80,
+		ImgUrl:      "https://www.realsimple.com/thmb/3vUPZvQKPoN2G8Enwj12HTWYRac=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/banana-hack-GettyImages-1141226184-63241283ec5e4cd289290d40d0471c3c.jpg",
+	}
+	prd4 := Product{
+		ID:          4,
+		Title:       "Grape",
+		Description: "Grape is purple, I Love Grape",
+		Price:       120,
+		ImgUrl:      "https://png.pngtree.com/png-clipart/20250104/original/pngtree-delicious-black-grapes-png-image_20004046.png",
+	}
+
+	prd5 := Product{
+		ID:          5,
+		Title:       "Strawberry",
+		Description: "Strawberry is red, I Love Strawberry",
+		Price:       200,
+		ImgUrl:      "https://cdn.mos.cms.futurecdn.net/4wwQNKxhra9z9oUaPfwkP3.jpg",
+	}
+
+	prd6 := Product{
+		ID:          6,
+		Title:       "Mango",
+		Description: "Mango is yellow, I Love Mango",
+		Price:       180,
+		ImgUrl:      "https://www.melissas.com/cdn/shop/files/4-pounds-image-of-honey-mangos-fruit-1125637415_512x512.jpg?v=1738768090",
+	}
+
+	productList = append(productList, prd1, prd2, prd3, prd4, prd5, prd6)
+
+}
