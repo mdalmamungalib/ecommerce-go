@@ -7,7 +7,7 @@ import(
 
 func Arekta(next http.Handler) http.Handler{
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
-		log.Panicln("ami arekta middleware")
+		log.Println("ami arekta middleware")
 		next.ServeHTTP(w, r)
 	})
 }

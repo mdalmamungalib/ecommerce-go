@@ -2,7 +2,7 @@ package middleware
 
 import "net/http"
 
-func CorsWithPreflight(next *http.ServeMux) http.Handler {
+func CorsWithPreflight(next http.Handler) http.Handler {
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// handle cors

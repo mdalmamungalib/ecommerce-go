@@ -14,7 +14,7 @@ func Logger(next http.Handler) http.Handler {
 
 		next.ServeHTTP(w, r)
 
-		log.Panicln("ami middleware pore print hobo")
+		log.Println("ami middleware pore print hobo")
 
 		log.Println(r.Method, r.URL.Path, time.Since(start))
 	})

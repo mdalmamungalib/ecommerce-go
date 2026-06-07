@@ -9,7 +9,7 @@ import (
 func Serve() {
 	manager := middleware.NewManger()
 
-	manager.Use(middleware.Logger, middleware.Hudai)
+	manager.Use(middleware.Logger, middleware.Hudai, )
 
 	mux := http.NewServeMux()
 

@@ -24,8 +24,12 @@ func initRoutes(mux *http.ServeMux, manager *middleware.Manger) {
 
 	mux.Handle(
 		"GET /products",
-		manager.With(
-			http.HandlerFunc(handlers.GetProducts),
+		middleware.CorsWithPreflight(
+			middleware.Hudai(
+				middleware.Logger(
+					http.HandlerFunc(handlers.GetProducts),
+				),
+			),
 		),
 	)
 
