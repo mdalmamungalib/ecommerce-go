@@ -24,8 +24,8 @@ func initRoutes(mux *http.ServeMux, manager *middleware.Manger) {
 
 	mux.Handle(
 		"GET /products",
-		middleware.CorsWithPreflight(
-			middleware.Hudai(
+		middleware.Cors(
+			middleware.Preflight(
 				middleware.Logger(
 					http.HandlerFunc(handlers.GetProducts),
 				),
