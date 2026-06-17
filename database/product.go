@@ -1,6 +1,6 @@
 package database
 
-var ProductList []Product
+var productList []Product
 
 type Product struct {
 	ID          int     `json:"id"`
@@ -8,6 +8,46 @@ type Product struct {
 	Description string  `json:"description"`
 	Price       float64 `json:"price"`
 	ImgUrl      string  `json:"imageUrl"`
+}
+
+func Store(p Product) Product {
+	p.ID = len(productList) + 1
+	productList = append(productList, p)
+	return p
+}
+
+func List() []Product {
+	return productList
+}
+
+func Get(productID int) *Product {
+	for _, product := range productList {
+		if product.ID == productID {
+			return &product
+		}
+	}
+	return nil // Return nil if not found
+}
+
+func Update(product Product) {
+	for idx, p := range productList {
+		if p.ID == product.ID {
+			productList[idx] = product
+		}
+	}
+}
+
+func Delete(productID int) {
+	var tempList []Product
+
+	for _, p := range productList {
+		if p.ID != productID {
+			tempList = append(tempList, p)
+		}
+	}
+
+	productList = tempList
+
 }
 
 func init() {
@@ -58,6 +98,6 @@ func init() {
 		ImgUrl:      "https://www.melissas.com/cdn/shop/files/4-pounds-image-of-honey-mangos-fruit-1125637415_512x512.jpg?v=1738768090",
 	}
 
-	ProductList = append(ProductList, prd1, prd2, prd3, prd4, prd5, prd6)
+	productList = append(productList, prd1, prd2, prd3, prd4, prd5, prd6)
 
 }
