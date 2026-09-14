@@ -1,11 +1,13 @@
 package handlers
 
 import (
+	"ecommerce/config"
 	"ecommerce/database"
 	"ecommerce/util"
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 )
 
 type ReqLogin struct {
@@ -35,7 +37,20 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "invalid credentials", http.StatusBadRequest)
 		return
 	}
-	
 
-	util.SendData(w, usr, http.StatusCreated)
+	cnf := config.GetConfig()
+	
+	accessToken, err := util.CreateJwt(cnf.JWTSecretKey, util.Payload{ //jwt secret key is called access token
+		Sub: strconv.Itoa(usr.ID),
+		FirstName: usr.FirstName,
+		LastName: usr.LastName,
+		Email: usr.Email,
+	})
+
+	if err != nil {
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
+
+	util.SendData(w, accessToken, http.StatusCreated)
 }

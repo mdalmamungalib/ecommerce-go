@@ -4,6 +4,8 @@ var productList []Product
 
 type Product struct {
 	ID          int     `json:"id"`
+	Email	   string  `json:"email"`
+	Password    string  `json:"password"`
 	Title       string  `json:"title"`
 	Description string  `json:"description"`
 	Price       float64 `json:"price"`
