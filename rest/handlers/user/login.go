@@ -1,4 +1,4 @@
-package handlers
+package user
 
 import (
 	"ecommerce/config"
@@ -15,7 +15,7 @@ type ReqLogin struct {
 	Password string `json:"password"`
 }
 
-func Login(w http.ResponseWriter, r *http.Request) {
+func (h *Handler) Login(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != "POST" {
 		http.Error(w, "Plz give me POST request", 400)
