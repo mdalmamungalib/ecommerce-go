@@ -1,4 +1,5 @@
-package product
+package review
+
 
 import (
 	"net/http"
@@ -6,7 +7,7 @@ import (
 	"ecommerce/util"
 )
 
-func (h *Handler) GetProducts(w http.ResponseWriter, r *http.Request) {
+func (h *Handler) GetReviews(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != "GET" {
 		http.Error(w, "Plz give me GET request", 400)

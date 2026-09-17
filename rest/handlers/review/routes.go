@@ -1,4 +1,4 @@
-package user
+package review
 
 import (
 	middleware "ecommerce/rest/middlewares"
@@ -7,16 +7,13 @@ import (
 
 func (h *Handler) RegisterRoutes(mux *http.ServeMux, manager *middleware.Manger) {
 	mux.Handle(
-		"POST /users",
-		manager.With(
-			http.HandlerFunc(h.CreateUser),
-		),
-	)
-
-	mux.Handle(
-		"POST /login",
-		manager.With(
-			http.HandlerFunc(h.Login),
+		"GET /reviews",
+		middleware.Cors(
+			middleware.Preflight(
+				middleware.Logger(
+					http.HandlerFunc(h.GetReviews),
+				),
+			),
 		),
 	)
 }
