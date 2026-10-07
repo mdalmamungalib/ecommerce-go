@@ -23,7 +23,7 @@ func Update(product Product) {
 type ProductRepo interface {
 	Create(p Product) (*Product, error)
 	Get(productId int) (*Product, error)
-	List() ([]Product, error)
+	List() ([]*Product, error)
 	Delete(productId int) error
 	Update(p Product) (*Product, error)
 }

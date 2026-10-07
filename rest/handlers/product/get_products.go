@@ -2,16 +2,17 @@ package product
 
 import (
 	"net/http"
-	"ecommerce/database"
 	"ecommerce/util"
 )
 
 func (h *Handler) GetProducts(w http.ResponseWriter, r *http.Request) {
 
-	if r.Method != "GET" {
-		http.Error(w, "Plz give me GET request", 400)
+	productList, err := h.productRepo.List()
+	if err != nil {
+		util.SendError(w, http.StatusInternalServerError, "Internal server error")
 		return
 	}
+	
 
-	util.SendData(w, database.List(), 200)
+	util.SendData(w, productList, http.StatusOK)
 }
