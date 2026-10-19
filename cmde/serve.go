@@ -7,13 +7,21 @@ import (
 	"ecommerce/rest/handlers/product"
 	"ecommerce/rest/handlers/user"
 	"ecommerce/rest/middlewares"
+	"fmt"
+	"os"
 )
 
 func Serve() {
 	cnf := config.GetConfig()
 
+	dbCon, err := db.NewConnection()
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
 	productRepo := repo.NewProductRepo()
-	userRepo := repo.NewUserRepo()
+	userRepo := repo.NewUserRepo(dbCon)
 
 	middlewares := middlewares.NewMiddlewares(cnf)
 
