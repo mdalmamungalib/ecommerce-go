@@ -2,6 +2,7 @@ package cmde
 
 import (
 	"ecommerce/config"
+	"ecommerce/infra/db"
 	"ecommerce/repo"
 	"ecommerce/rest"
 	"ecommerce/rest/handlers/product"
