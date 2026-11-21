@@ -5,9 +5,10 @@ import (
 	"ecommerce/infra/db"
 	"ecommerce/repo"
 	"ecommerce/rest"
-	"ecommerce/rest/handlers/product"
-	"ecommerce/rest/handlers/user"
+	prdcthandler "ecommerce/rest/handlers/product"
+	usrhandler "ecommerce/rest/handlers/user"
 	"ecommerce/rest/middlewares"
+	"ecommerce/user"
 	"fmt"
 	"os"
 )
@@ -27,13 +28,17 @@ func Serve() {
 		os.Exit(1)
 	}
 
+	//repos
 	productRepo := repo.NewProductRepo(dbCon)
 	userRepo := repo.NewUserRepo(dbCon)
 
+	//domains
+	usrSvc := user.NewService(userRepo)
+
 	middlewares := middlewares.NewMiddlewares(cnf)
 
-	productHandler := product.NewHandler(middlewares, productRepo)
-	userHandler := user.NewHandler(cnf, userRepo)
+	productHandler := prdcthandler.NewHandler(middlewares, productRepo)
+	userHandler := usrhandler.NewHandler(cnf, usrSvc)
 
 	server := rest.NewServer(
 		cnf,
